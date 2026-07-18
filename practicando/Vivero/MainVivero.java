@@ -60,6 +60,11 @@ public class MainVivero {
 				System.out.println("\nIngresa el codigo");
 				int codigoH = sc.nextInt();
 				sc.nextLine();
+				if (chequearExistencia(arregloFrutal, codigoH) || chequearExistencia(arregloHortaliza, codigoH)
+						|| chequearExistencia(arregloAromatica, codigoH)) {
+					System.out.println("Ya existe una planta con ese codigo");
+					break;
+				}
 				System.out.println("Ingresa el nombre");
 				String nombreH = sc.nextLine();
 				System.out.println("Ingresa el precio");
@@ -78,6 +83,11 @@ public class MainVivero {
 				System.out.println("\nIngresa el codigo");
 				int codigoA = sc.nextInt();
 				sc.nextLine();
+				if (chequearExistencia(arregloFrutal, codigoA) || chequearExistencia(arregloHortaliza, codigoA)
+						|| chequearExistencia(arregloAromatica, codigoA)) {
+					System.out.println("Ya existe una planta con ese codigo");
+					break;
+				}
 				System.out.println("Ingresa el nombre");
 				String nombreA = sc.nextLine();
 				System.out.println("Ingresa el precio");
@@ -132,7 +142,9 @@ public class MainVivero {
 				int codigoCuidado = sc.nextInt();
 				sc.nextLine();
 				
-				mostrarCuidados(arregloPlanta, codigoCuidado);
+				mostrarCuidados(arregloFrutal, codigoCuidado);
+				mostrarCuidados(arregloHortaliza, codigoCuidado);
+				mostrarCuidados(arregloAromatica, codigoCuidado);
 				
 				break;
 			case 8:
@@ -400,7 +412,7 @@ public class MainVivero {
 		int contador = 0;
 		for(int i = 0; i < a.length; i++) {
 			if (a[i] != null) {
-				contador = contador++;
+				contador++;
 			}
 		}
 		return contador;
